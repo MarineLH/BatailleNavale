@@ -20,8 +20,10 @@
   -
   
 #Description de l'application :
-  - Version 1.0 (08/01/2016):
+  - Version 1.0 (08/01/2016) :
+  
     -Pouvoir placer les bateaux :
+
       -Manuellement ou Aléatoirement
   
       
