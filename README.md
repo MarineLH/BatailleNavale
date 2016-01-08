@@ -9,8 +9,11 @@
   
 # Description de l'équipe :
   -Romain Valeye    romain.valeye@epsi.fr
+  
   -Marine Lhuillier   marine.lhuillier@epsi.fr
+  
   -Robin Durand   robin.durand@epsi.fr
+  
   -Sébastien Marchal    sebastien.marchal@epsi.fr
   
 # Chef de projet : 
