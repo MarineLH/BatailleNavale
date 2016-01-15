@@ -8,16 +8,16 @@
   -Création d'un jeu type "Bataille Navale" en orienté objet
   
 # Description de l'équipe :
-  -Romain Valeye    romain.valeye@epsi.fr
+  -Romain VALEYE    romain.valeye@epsi.fr
   
-  -Marine Lhuillier   marine.lhuillier@epsi.fr
+  -Marine LHUILLIER   marine.lhuillier@epsi.fr
   
-  -Robin Durand   robin.durand@epsi.fr
+  -Robin DURAND   robin.durand@epsi.fr
   
-  -Sébastien Marchal    sebastien.marchal@epsi.fr
+  -Sébastien MARCHAL    sebastien.marchal@epsi.fr
   
 # Chef de projet : 
-  -
+  -Romain VALEYE
   
 #Description de l'application :
   - Version 1.0 (08/01/2016) :
