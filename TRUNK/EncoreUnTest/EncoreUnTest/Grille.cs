@@ -9,14 +9,17 @@ namespace EncoreUnTest
 
     public class Grille
     {
+        public NumJoueur IdJoueur { get; set; }
         public Case[,] grille { get; set; }
-        public Grille()
+
+        public Grille(NumJoueur _num)
         {
-            grille = new Case[12, 12];
+            IdJoueur = _num;
+            grille = new Case[12, 12]; // une grille est un tableau de cases
 
             int x = 0, y = 0;
 
-            foreach (Case cellule in grille)
+            foreach (Case cellule in grille) // On initialise chaque case de la grille
             {
                 grille.SetValue(new Case(x, y), x, y);
                 x += 1;
@@ -28,6 +31,7 @@ namespace EncoreUnTest
             }
         }
 
+        // Dessiner la grille pour afficher le terrain de jeu.
         public void Draw()
         {
             int rowLength = grille.GetLength(0);

@@ -8,6 +8,7 @@ namespace EncoreUnTest
 {
     public class Flotte
     {
+        public NumJoueur IdJoueur { get; set; }
         public int QuantitePA { get; set; }
         public int QuantiteCuir { get; set; }
         public int QuantiteCrois { get; set; }
@@ -15,8 +16,9 @@ namespace EncoreUnTest
         public int QuantiteSousMarin { get; set; }
         public int total { get; private set; }
 
-        public Flotte()
+        public Flotte(NumJoueur _num)
         {
+            IdJoueur = _num;
             QuantitePA = 1;
             QuantiteCuir = 1;
             QuantiteCrois = 1;
@@ -24,33 +26,32 @@ namespace EncoreUnTest
             QuantiteSousMarin = 2;
             total = QuantitePA + QuantiteCuir + QuantiteCrois + QuantiteTorpi + QuantiteSousMarin;
         }
-
+        /* La flotte détermine le nombre de vaisseaux à placer par un joueur.
+        Chaque joueur a droit à un nombre limité de bateaux. A chaque nouveau placement,
+        il faut décrémenter la quantité de ce type de bateau.*/
         public void PlacerBateau(NomsBateau _nom)
         {
             switch (_nom)
             {
                 case NomsBateau.PorteAvions:
                     if (QuantitePA > 0)
-                        this.QuantitePA--;
+                        QuantitePA--;
                     break;
                 case NomsBateau.Cuirrasse:
                     if (QuantiteCuir > 0)
-                        this.QuantiteCuir--;
+                        QuantiteCuir--;
                     break;
                 case NomsBateau.Croiseur:
                     if (QuantiteCrois > 0)
-                        this.QuantiteCrois--;
+                        QuantiteCrois--;
                     break;
                 case NomsBateau.Torpilleur:
                     if (QuantiteTorpi > 0)
-                        this.QuantiteTorpi--;
+                        QuantiteTorpi--;
                     break;
                 case NomsBateau.SousMarin:
                     if (QuantiteSousMarin > 0)
-                        this.QuantiteSousMarin--;
-                    break;
-                default:
-                    Console.WriteLine("Erreur, vous n'avez plus ce type de bateau disponible.");
+                        QuantiteSousMarin--;
                     break;
             }
             total = QuantitePA + QuantiteCuir + QuantiteCrois + QuantiteTorpi + QuantiteSousMarin;

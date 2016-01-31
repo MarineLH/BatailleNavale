@@ -15,6 +15,7 @@ namespace EncoreUnTest
         public int Taille { get; set; }
         public int[] Plage { get; set; }
 
+        // Vérifier que toutes les cases sur lesquelles se trouve le bateau sont disponibles.
         public bool PeutPlacer(Grille _grille, Flotte _flotte)
         {
             bool peutPlacer = true;
@@ -63,8 +64,10 @@ namespace EncoreUnTest
             return peutPlacer;
         }
 
+        // Détermine le contour du bateau pour rendre cette zone inaccessible lors du placement des autres bateaux.
         public void EauInaccessible(Grille _grille)
         {
+            // Les calculs changent en fonction de l'orientation du bateau.
             int PosXEauInacDebut, PosXEauInacFin, PosYEauInacDebut, PosYEauInacFin, x, y;
             if (O == Orientation.Est)
             {
@@ -156,6 +159,8 @@ namespace EncoreUnTest
             }
         }
     }
+
+    // Définition de toutes les sous-classes :
 
     public class PorteAvions : Bateau
     {

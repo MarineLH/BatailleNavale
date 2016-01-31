@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace EncoreUnTest
 {
+    // Les IDs des joueurs.
     public enum NumJoueur
     {
         J1,

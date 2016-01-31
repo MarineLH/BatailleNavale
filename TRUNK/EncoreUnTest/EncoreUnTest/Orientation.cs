@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace EncoreUnTest
 {
+    // Simple énumération des différentes orientations d'un bateau.
     public enum Orientation
     {
         Ouest,

@@ -48,6 +48,7 @@
     <Compile Include="EtatCase.cs" />
     <Compile Include="Flotte.cs" />
     <Compile Include="Grille.cs" />
+    <Compile Include="Joueur.cs" />
     <Compile Include="NomsBateau.cs" />
     <Compile Include="NumJoueur.cs" />
     <Compile Include="Orientation.cs" />

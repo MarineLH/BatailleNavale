@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace EncoreUnTest
 {
+    // Simple énumération des différents noms d'un bateau.
     public enum NomsBateau
     {
         PorteAvions,

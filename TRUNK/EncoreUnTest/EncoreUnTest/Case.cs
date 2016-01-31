@@ -19,39 +19,24 @@ namespace EncoreUnTest
         public Case(int _x, int _y)
         {
             
-            Code = string.Format("{0}{1}", Program.Number2String(_y, true), _x);
+            Code = string.Format("{0}{1}", Program.Number2String(_y, true), _x); // Transforme les abscisses et les ordonnées en un code composé d'une lettre et d'un nombre
             X = _x;
             Y = _y;
+            // La grille est définie en 12 x 12. Les première et dernière lignes, ainsi que les première et dernière colonnes, sont inaccessibles.
             if (X == 0 || Y == 0 || X == 11 || Y == 11)
             {
                 Etat = EtatCase.Inaccessible;
-                Symbole = "0";
+                Symbole = " ";
             }
-            else
+            else // Lors de l'initialisation, toutes les cases n'ont que de l'eau.
             {
                 Etat = EtatCase.Eau;
                 Symbole = "-";
             }
 
-        }
-        public Case(string _code)
-        {
-            Code = _code;
-            X = int.Parse(Code.Substring(1, 1));
-            Y = char.ToUpper(char.Parse(Code.Substring(0, 1))) - 64;
+        }       
 
-            if (X == 0 || Y == 0 || X == 11 || Y == 11)
-            {
-                Etat = EtatCase.Inaccessible;
-                Symbole = "0";
-            }
-            else
-            {
-                Etat = EtatCase.Eau;
-                Symbole = "-";
-            }
-        }
-
+        // Vérifier l'état de la case pour déterminer si l'on peut placer un bateau dessus ou non.
         public bool PeutPlacer()
         {
             switch (Etat)
@@ -69,34 +54,32 @@ namespace EncoreUnTest
             }
         }
 
-        public void Tirer()
+        // Méthode appelée lorsqu'un joueur effectue un tir. En fonction de l'état de la case, on va retourner le nouvel état de cette case.
+        public EtatCase Tirer()
         {
             switch (Etat)
             {
                 case EtatCase.Eau:
                     Etat = EtatCase.TirRate;
-                    Console.WriteLine("Vous avez tiré dans l'eau.");
                     break;
                 case EtatCase.TirRate:
-                    Console.WriteLine("Vous avez déjà tiré ici !");
+                    Etat = EtatCase.TirRateAlready;
                     break;
                 case EtatCase.Bateau:
                     Etat = EtatCase.BateauTouche;
-                    Console.WriteLine("Vous avez touché un bateau !");
                     break;
                 case EtatCase.BateauTouche:
-                    Console.WriteLine("Vous avez déjà touché un bateau ici.");
-                    break;
-                case EtatCase.Inaccessible:
-                    Console.WriteLine("Case inaccessible");
+                    Etat = EtatCase.BateauToucheAlready;
                     break;
                 case EtatCase.EauInaccessible:
                     Etat = EtatCase.TirRate;
-                    Console.WriteLine("Vous avez tiré dans l'eau.");
                     break;
             }
+            return Etat;
         }
 
+        // Méthode appelée après un tir, ou bien après un placement de bateau. Elle doit être utilisée plutôt que le set(EtatBateau) 
+        // car elle donne le symbole à afficher sur la grille.
         public void ChangerEtat(EtatCase _Etat)
         {
             Etat = _Etat;
@@ -115,10 +98,10 @@ namespace EncoreUnTest
                     Symbole = "X";
                     break;
                 case EtatCase.Inaccessible:
-                    Symbole = "0";
+                    Symbole = " ";
                     break;
                 case EtatCase.EauInaccessible:
-                    Symbole = "T";
+                    Symbole = "-";
                     break;
             }
         }
