@@ -16,6 +16,7 @@ namespace EncoreUnTest
         BateauTouche,
         BateauToucheAlready,
         Inaccessible,
-        EauInaccessible
+        EauInaccessible,
+        Coulé
     }
 }

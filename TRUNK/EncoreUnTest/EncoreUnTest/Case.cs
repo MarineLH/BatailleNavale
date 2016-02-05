@@ -71,6 +71,9 @@ namespace EncoreUnTest
                 case EtatCase.BateauTouche:
                     Etat = EtatCase.BateauToucheAlready;
                     break;
+                case EtatCase.Coulé:
+                    Etat = EtatCase.BateauToucheAlready;
+                    break;
                 case EtatCase.EauInaccessible:
                     Etat = EtatCase.TirRate;
                     break;
@@ -96,6 +99,9 @@ namespace EncoreUnTest
                     break;
                 case EtatCase.BateauTouche:
                     Symbole = "X";
+                    break;
+                case EtatCase.Coulé:
+                    Symbole = "#";
                     break;
                 case EtatCase.Inaccessible:
                     Symbole = " ";

@@ -10,7 +10,7 @@ namespace EncoreUnTest
     public enum NomsBateau
     {
         PorteAvions,
-        Cuirrasse,
+        Cuirassé,
         Croiseur,
         Torpilleur,
         SousMarin

@@ -37,7 +37,7 @@ namespace EncoreUnTest
                     if (QuantitePA > 0)
                         QuantitePA--;
                     break;
-                case NomsBateau.Cuirrasse:
+                case NomsBateau.Cuirassé:
                     if (QuantiteCuir > 0)
                         QuantiteCuir--;
                     break;

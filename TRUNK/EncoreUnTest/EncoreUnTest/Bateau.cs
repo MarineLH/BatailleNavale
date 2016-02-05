@@ -14,7 +14,49 @@ namespace EncoreUnTest
         public int Y { get; set; }
         public int Taille { get; set; }
         public int[] Plage { get; set; }
+        public bool Coule { get; set; }
 
+        public bool EstCoule(Grille _grilleAdversaire, Grille _monAffichageDeSaGrille)
+        {
+            bool estCoule = true; // On part du principe que le bateau est coulé.
+            foreach (var cell in Plage)
+            {   
+                if (O == Orientation.Est || O == Orientation.Ouest)
+                {
+                    if (_grilleAdversaire.grille[Y, cell].Etat == EtatCase.Bateau) // Si on trouve une case dont l'état est bateau, alors le bateau n'est pas coulé.
+                    {
+                        estCoule = false;
+                        break;
+                    }
+                }
+                else
+                {
+                    if (_grilleAdversaire.grille[cell, X].Etat == EtatCase.Bateau)
+                    {
+                        estCoule = false;
+                        break;
+                    }
+                }
+            }
+            if (estCoule)
+            {
+                Coule = true;
+                foreach (var cell in Plage)
+                {
+                    if (O == Orientation.Est || O == Orientation.Ouest)
+                    {
+                        _grilleAdversaire.grille[Y, cell].ChangerEtat(EtatCase.Coulé);
+                        _monAffichageDeSaGrille.grille[Y, cell].ChangerEtat(EtatCase.Coulé);
+                    }
+                    else
+                    {
+                        _grilleAdversaire.grille[cell, X].ChangerEtat(EtatCase.Coulé);
+                        _monAffichageDeSaGrille.grille[cell, X].ChangerEtat(EtatCase.Coulé);
+                    }
+                }
+            }
+            return estCoule;
+        }
         // Vérifier que toutes les cases sur lesquelles se trouve le bateau sont disponibles.
         public bool PeutPlacer(Grille _grille, Flotte _flotte)
         {
@@ -191,6 +233,7 @@ namespace EncoreUnTest
                     Plage[i] = Y - i;
                 }
             }
+            Coule = false;
         }
     }
 
@@ -201,7 +244,7 @@ namespace EncoreUnTest
             X = _x;
             Y = _y;
             O = _or;
-            Nom = NomsBateau.Cuirrasse;
+            Nom = NomsBateau.Cuirassé;
             Taille = 4;
             Plage = new int[Taille];
             for (int i = 0; i < Taille; i++)
@@ -215,6 +258,7 @@ namespace EncoreUnTest
                 else
                     Plage[i] = Y - i;
             }
+            Coule = false;
         }
     }
 
@@ -239,6 +283,7 @@ namespace EncoreUnTest
                 else
                     Plage[i] = Y - i;
             }
+            Coule = false;
         }
     }
 
@@ -263,6 +308,7 @@ namespace EncoreUnTest
                 else
                     Plage[i] = Y - i;
             }
+            Coule = false;
         }
     }
 
@@ -287,6 +333,7 @@ namespace EncoreUnTest
                 else
                     Plage[i] = Y - i;
             }
+            Coule = false;
         }
     }
 }
