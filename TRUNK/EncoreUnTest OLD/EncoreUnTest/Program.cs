@@ -50,7 +50,7 @@ namespace EncoreUnTest
 
                     case EtatCase.TirRateAlready:
                         // Si on est un peu con et qu'on re-tire au même endroit
-                        Console.WriteLine("Vous avez déjà tiré ici ! Réessayez.\r\n");              // Bah on peut réessayer. C'est gentil non ?
+                        Console.WriteLine("Vous avez déjà tiré ici ! Réessayez.");              // Bah on peut réessayer. C'est gentil non ?
                         etatPartie = EtatPartie.JRetire; 
                         break;
 
@@ -58,37 +58,32 @@ namespace EncoreUnTest
                         _adversaire.MaGrille.grille[yTir, xTir].ChangerEtat(EtatCase.BateauTouche); // Si on réussit un tir, on update les grilles, et on tire à nouveau.
                         _joueur.SaGrille.grille[yTir, xTir].ChangerEtat(EtatCase.BateauTouche);
                         break;
+                    case EtatCase.Coulé:
+                        if (!_adversaire.ResteBateau())
+                            etatPartie = EtatPartie.PTerminée;
+                        else
+                            etatPartie = EtatPartie.JRetire;
+
+                        break;
 
                     case EtatCase.BateauToucheAlready:                                          // Là encore, c'est pour les teubés.
-                        Console.WriteLine("Vous avez déjà touché un bateau ici ! Réessayez.\r\n");
+                        Console.WriteLine("Vous avez déjà touché un bateau ici ! Réessayez.");
                         etatPartie = EtatPartie.JRetire;
                         break;
                 }
             }
             else // Sinon demander de tirer à nouveau avec un nouveau code.
             {
-                Console.WriteLine("Erreur. Vous avez mal écrit le numéro de la case. Réessayez.\r\n");
+                Console.WriteLine("Erreur. Vous avez mal écrit le numéro de la case. Réessayez.");
                 etatPartie = EtatPartie.JRetire;
             }
 
             // Faire le listing des bateaux qu'il reste à l'adversaire.
-            int i = 1; // Compteurs pour les bateaux existant deux fois (torpilleur et sous marin)
-            int j = 1;
             foreach (var bateau in _adversaire.ListBateaux)
             {
                 if (bateau.EstCoule(_adversaire.MaGrille, _joueur.SaGrille))
                 {
-                    if (!_adversaire.ResteBateau())
-                    {
-                        etatPartie = EtatPartie.PTerminée;
-                        break;
-                    }
-                    else
-                    {
-                        etatPartie = EtatPartie.JRetire;
-                    }
                     Console.WriteLine("Un {0} de l'adversaire est coulé !", bateau.Nom);
-                    
                 }
                 else
                 {
@@ -104,16 +99,10 @@ namespace EncoreUnTest
                             Console.WriteLine("Il vous reste {0} {1}(s) à couler.", _adversaire.MaFlotte.QuantiteCrois, bateau.Nom);
                             break;
                         case NomsBateau.Torpilleur:
-                            
-                            if (i == 1)
-                                Console.WriteLine("Il vous reste {0} {1}(s) à couler.", _adversaire.MaFlotte.QuantiteTorpi, bateau.Nom);
-                            i++;
+                            Console.WriteLine("Il vous reste {0} {1}(s) à couler.", _adversaire.MaFlotte.QuantiteTorpi, bateau.Nom);
                             break;
                         case NomsBateau.SousMarin:
-                            
-                            if (j == 1)
-                                Console.WriteLine("Il vous reste {0} {1}(s) à couler.", _adversaire.MaFlotte.QuantiteSousMarin, bateau.Nom);
-                            j++;
+                            Console.WriteLine("Il vous reste {0} {1}(s) à couler.", _adversaire.MaFlotte.QuantiteSousMarin, bateau.Nom);
                             break;
                     }
                 }
@@ -195,9 +184,9 @@ namespace EncoreUnTest
             Console.Clear();
 
             if (DernierTir == NumJoueur.J1)
-                Console.WriteLine("Félicitations {0} ({1}), vous avez gagné la partie en {2} tirs !", joueur1.Nom, DernierTir, joueur1.NbTirs);
+                Console.WriteLine("Félicitation {0} ({1}), vous avez gagné la partie en {2} tirs !", joueur1.Nom, DernierTir, joueur1.NbTirs);
             else
-                Console.WriteLine("Félicitations {0} ({1}), vous avez gagné la partie en {2} tirs !", joueur2.Nom, DernierTir, joueur2.NbTirs);
+                Console.WriteLine("Félicitation {0} ({1}), vous avez gagné la partie en {2} tirs !", joueur2.Nom, DernierTir, joueur2.NbTirs);
 
             Console.ReadKey();
         }
