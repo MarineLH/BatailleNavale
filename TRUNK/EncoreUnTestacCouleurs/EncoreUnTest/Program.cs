@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Channels;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace EncoreUnTest
+namespace NavalStrike
 {
     public class Program
     {
@@ -28,7 +24,7 @@ namespace EncoreUnTest
             return c.ToString();
         }
 
-        // Méthode pour tirer (No shit Sherlock)
+        // Méthode pour tirer
         public static EtatPartie Tirer(Joueur _joueur, Joueur _adversaire, string _code)
         {
             EtatPartie etatPartie = EtatPartie.JRetire;
@@ -48,8 +44,7 @@ namespace EncoreUnTest
                         etatPartie = EtatPartie.JSuivant;                                       // MaJ Emplacement du tir sur la grille du joueur représentant celle de l'adv.
                         break;
 
-                    case EtatCase.TirRateAlready:
-                        // Si on est un peu con et qu'on re-tire au même endroit
+                    case EtatCase.TirRateAlready:                                               // Si on tire à un endroit où on a déjà tiré ...
                         Console.WriteLine("Vous avez déjà tiré ici ! Réessayez.\r\n");              // Bah on peut réessayer. C'est gentil non ?
                         etatPartie = EtatPartie.JRetire; 
                         break;
@@ -59,8 +54,8 @@ namespace EncoreUnTest
                         _joueur.SaGrille.grille[yTir, xTir].ChangerEtat(EtatCase.BateauTouche);
                         break;
 
-                    case EtatCase.BateauToucheAlready:                                          // Là encore, c'est pour les teubés.
-                        Console.WriteLine("Vous avez déjà touché un bateau ici ! Réessayez.\r\n");
+                    case EtatCase.BateauToucheAlready:                                          // Là encore, c'est pour les tirs sur des bateaux déjà touchés.
+                        Console.WriteLine("Vous avez déjà tiré ici ! Réessayez.\r\n");
                         etatPartie = EtatPartie.JRetire;
                         break;
                 }

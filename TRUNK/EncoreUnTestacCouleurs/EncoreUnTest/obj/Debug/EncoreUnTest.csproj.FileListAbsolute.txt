@@ -4,3 +4,9 @@ c:\users\rvale_000\documents\visual studio 2015\Projects\EncoreUnTest\EncoreUnTe
 c:\users\rvale_000\documents\visual studio 2015\Projects\EncoreUnTest\EncoreUnTest\obj\Debug\EncoreUnTest.csprojResolveAssemblyReference.cache
 c:\users\rvale_000\documents\visual studio 2015\Projects\EncoreUnTest\EncoreUnTest\obj\Debug\EncoreUnTest.exe
 c:\users\rvale_000\documents\visual studio 2015\Projects\EncoreUnTest\EncoreUnTest\obj\Debug\EncoreUnTest.pdb
+C:\Users\rvale_000\Documents\GitHub\BatailleNavale\TRUNK\EncoreUnTestacCouleurs\EncoreUnTest\bin\Debug\NavalStrike.exe.config
+C:\Users\rvale_000\Documents\GitHub\BatailleNavale\TRUNK\EncoreUnTestacCouleurs\EncoreUnTest\bin\Debug\NavalStrike.exe
+C:\Users\rvale_000\Documents\GitHub\BatailleNavale\TRUNK\EncoreUnTestacCouleurs\EncoreUnTest\bin\Debug\NavalStrike.pdb
+C:\Users\rvale_000\Documents\GitHub\BatailleNavale\TRUNK\EncoreUnTestacCouleurs\EncoreUnTest\obj\Debug\EncoreUnTest.csprojResolveAssemblyReference.cache
+C:\Users\rvale_000\Documents\GitHub\BatailleNavale\TRUNK\EncoreUnTestacCouleurs\EncoreUnTest\obj\Debug\NavalStrike.exe
+C:\Users\rvale_000\Documents\GitHub\BatailleNavale\TRUNK\EncoreUnTestacCouleurs\EncoreUnTest\obj\Debug\NavalStrike.pdb

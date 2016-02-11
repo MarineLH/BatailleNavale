@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EncoreUnTest
+﻿namespace NavalStrike
 {
     public class Flotte
     {
@@ -14,7 +8,7 @@ namespace EncoreUnTest
         public int QuantiteCrois { get; set; }
         public int QuantiteTorpi { get; set; }
         public int QuantiteSousMarin { get; set; }
-        public int total { get; private set; }
+        public int Total { get; private set; }
 
         public Flotte(NumJoueur _num)
         {
@@ -24,7 +18,7 @@ namespace EncoreUnTest
             QuantiteCrois = 1;
             QuantiteTorpi = 2;
             QuantiteSousMarin = 2;
-            total = QuantitePA + QuantiteCuir + QuantiteCrois + QuantiteTorpi + QuantiteSousMarin;
+            Total = QuantitePA + QuantiteCuir + QuantiteCrois + QuantiteTorpi + QuantiteSousMarin;
         }
         /* La flotte détermine le nombre de vaisseaux à placer par un joueur.
         Chaque joueur a droit à un nombre limité de bateaux. A chaque nouveau placement,
@@ -54,7 +48,7 @@ namespace EncoreUnTest
                         QuantiteSousMarin--;
                     break;
             }
-            total = QuantitePA + QuantiteCuir + QuantiteCrois + QuantiteTorpi + QuantiteSousMarin;
+            Total = QuantitePA + QuantiteCuir + QuantiteCrois + QuantiteTorpi + QuantiteSousMarin;
         }
     }
 }

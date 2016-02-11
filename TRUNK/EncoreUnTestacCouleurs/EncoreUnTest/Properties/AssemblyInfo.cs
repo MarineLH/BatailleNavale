@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Les informations générales relatives à un assembly dépendent de 
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
-[assembly: AssemblyTitle("EncoreUnTest")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Naval Strike")]
+[assembly: AssemblyDescription("Une bataille navale en console")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("EncoreUnTest")]
+[assembly: AssemblyCompany("ADJR Corp")]
+[assembly: AssemblyProduct("Naval Strike")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

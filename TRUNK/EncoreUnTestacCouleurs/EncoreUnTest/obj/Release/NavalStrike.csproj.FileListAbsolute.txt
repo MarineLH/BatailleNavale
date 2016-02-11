@@ -1,0 +1,3 @@
+C:\Users\rvale_000\Documents\GitHub\BatailleNavale\TRUNK\EncoreUnTestacCouleurs\EncoreUnTest\bin\Release\NavalStrike.exe.config
+C:\Users\rvale_000\Documents\GitHub\BatailleNavale\TRUNK\EncoreUnTestacCouleurs\EncoreUnTest\obj\Release\NavalStrike.exe
+C:\Users\rvale_000\Documents\GitHub\BatailleNavale\TRUNK\EncoreUnTestacCouleurs\EncoreUnTest\obj\Release\NavalStrike.pdb

@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace EncoreUnTest
+namespace NavalStrike
 {
     public class Joueur
     {
@@ -45,7 +43,7 @@ namespace EncoreUnTest
             MaFlotte = new Flotte(ID);
             ListBateaux = new List<Bateau>();
 
-            while (MaFlotte.total != 0)
+            while (MaFlotte.Total != 0)
             {
                 Console.WriteLine("Vous pouvez placer {0} porte-avions, {1} cuirassé(s), {2} croiseur(s), {3} torpilleur(s), {4} sous-marin(s).", MaFlotte.QuantitePA, MaFlotte.QuantiteCuir, MaFlotte.QuantiteCrois, MaFlotte.QuantiteTorpi, MaFlotte.QuantiteSousMarin);
                 Console.WriteLine("Choisissez un bateau à placer : PorteAvions / Cuirassé / Croiseur / Torpilleur / SousMarin");
@@ -173,7 +171,7 @@ namespace EncoreUnTest
                 Console.WriteLine("Actualisation de la grille...");
                 MaGrille.Draw();
             }
-            // On réinitialise la flotte pour les calculs
+            // On réinitialise la flotte pour les calculs pendant la phase de tirs
             MaFlotte = new Flotte(ID);
         }
 
