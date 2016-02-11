@@ -1,0 +1,8 @@
+C:\Users\rvale_000\Documents\GitHub\BatailleNavale\TRUNK\EncoreUnTestacCouleurs\EncoreUnTest\bin\Debug\NavalStrike.exe.config
+C:\Users\rvale_000\Documents\GitHub\BatailleNavale\TRUNK\EncoreUnTestacCouleurs\EncoreUnTest\obj\Debug\NavalStrike.exe
+C:\Users\rvale_000\Documents\GitHub\BatailleNavale\TRUNK\EncoreUnTestacCouleurs\EncoreUnTest\obj\Debug\NavalStrike.pdb
+C:\Users\rvale_000\Documents\GitHub\BatailleNavale\TRUNK\EncoreUnTestacCouleurs\EncoreUnTest\bin\Debug\NavalStrike.exe
+C:\Users\rvale_000\Documents\GitHub\BatailleNavale\TRUNK\EncoreUnTestacCouleurs\EncoreUnTest\bin\Debug\NavalStrike.pdb
+C:\Users\rvale_000\Documents\GitHub\BatailleNavale\TRUNK\EncoreUnTestacCouleurs\NavalStrike\bin\Debug\NavalStrike.exe.config
+C:\Users\rvale_000\Documents\GitHub\BatailleNavale\TRUNK\EncoreUnTestacCouleurs\NavalStrike\obj\Debug\NavalStrike.exe
+C:\Users\rvale_000\Documents\GitHub\BatailleNavale\TRUNK\EncoreUnTestacCouleurs\NavalStrike\obj\Debug\NavalStrike.pdb
