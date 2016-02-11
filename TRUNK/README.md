@@ -20,11 +20,10 @@
   -Romain VALEYE
   
 #Description de l'application :
-  - Version 1.0 (08/01/2016) :
+  - Le programme se déroule en deux grandes phases :
   
-    -Pouvoir placer les bateaux :
-
-      -Manuellement ou Aléatoirement
+    - Les joueurs placent leurs bateaux.
+    - Les joueurs tirent jusqu'à ce qu'un des joueurs ait tous ses bateaux coulés.
   
       
   
