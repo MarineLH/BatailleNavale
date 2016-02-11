@@ -31,7 +31,7 @@ namespace NavalStrike
             PlacerMaFlotte(); // A quoi ça sert une grille sans bateaux ? :P
         }
 
-        // Beaucoup de code très compliqué mais surtout très répétitif
+        // Beaucoup de code plus ou moins compliqué mais surtout très répétitif
         public void PlacerMaFlotte()
         {
             NomsBateau NomBat;
@@ -74,13 +74,14 @@ namespace NavalStrike
                     case NomsBateau.PorteAvions:                  
                         if (MaFlotte.QuantitePA != 0)
                         {
-                            MaFlotte.PlacerBateau(NomsBateau.PorteAvions);
                             Bateau PA = new PorteAvions(XBat, YBat, Orient); // On l'instancie.
                             ListBateaux.Add(PA); // On l'ajoute à la liste de nos bateaux.
                             if (!PA.PeutPlacer(MaGrille, MaFlotte))
                                 // Mais s'il s'avère qu'il est impossible de le placer...
-                                ListBateaux.Remove(PA);
-                        } // On le retire de la liste.
+                                ListBateaux.Remove(PA); // On le retire de la liste.
+                            else // S'il est effectivement possible de le placer on appelle cette procédure de la flotte pour décrémenter le total de bateaux à placer
+                                MaFlotte.PlacerBateau(NomsBateau.PorteAvions);
+                        } 
                         else
                         {
                             Console.WriteLine("Vous ne pouvez plus placer de bateau de ce type.");
@@ -90,11 +91,12 @@ namespace NavalStrike
                              // Idem pour tous les autres cas.
                         if (MaFlotte.QuantiteCuir != 0)
                         {
-                            MaFlotte.PlacerBateau(NomsBateau.Cuirassé);
                             Bateau Cuir = new Cuirrasse(XBat, YBat, Orient);
                             ListBateaux.Add(Cuir);
                             if (!Cuir.PeutPlacer(MaGrille, MaFlotte))
                                 ListBateaux.Remove(Cuir);
+                            else
+                                MaFlotte.PlacerBateau(NomsBateau.Cuirassé);
                         }
                         else
                         {
@@ -105,11 +107,12 @@ namespace NavalStrike
                         
                         if (MaFlotte.QuantiteCrois != 0)
                         {
-                            MaFlotte.PlacerBateau(NomsBateau.Croiseur);
                             Bateau Crois = new Croiseur(XBat, YBat, Orient);
                             ListBateaux.Add(Crois);
                             if (!Crois.PeutPlacer(MaGrille, MaFlotte))
                                 ListBateaux.Remove(Crois);
+                            else
+                                MaFlotte.PlacerBateau(NomsBateau.Croiseur);
                         }
                         else
                         {
@@ -124,20 +127,22 @@ namespace NavalStrike
                             break;
                         }
                         if (!ListBateaux.Contains(Torpi1))
-                        {
-                            MaFlotte.PlacerBateau(NomsBateau.Torpilleur);
+                        {                           
                             Torpi1 = new Torpilleur(XBat, YBat, Orient);
                             ListBateaux.Add(Torpi1);
                             if (!Torpi1.PeutPlacer(MaGrille, MaFlotte))
                                 ListBateaux.Remove(Torpi1);
+                            else
+                                MaFlotte.PlacerBateau(NomsBateau.Torpilleur);
                         }
                         else
                         {
-                            MaFlotte.PlacerBateau(NomsBateau.Torpilleur);
                             Torpi2 = new Torpilleur(XBat, YBat, Orient);
                             ListBateaux.Add(Torpi2);
                             if (!Torpi2.PeutPlacer(MaGrille, MaFlotte))
                                 ListBateaux.Remove(Torpi2);
+                            else
+                                MaFlotte.PlacerBateau(NomsBateau.Torpilleur);
                         }
                         break;
                     case NomsBateau.SousMarin:
@@ -150,19 +155,21 @@ namespace NavalStrike
 
                         if (!ListBateaux.Contains(SM1))
                         {
-                            MaFlotte.PlacerBateau(NomsBateau.SousMarin);
                             SM1 = new SousMarin(XBat, YBat, Orient);
                             ListBateaux.Add(SM1);
                             if (!SM1.PeutPlacer(MaGrille, MaFlotte))
                                 ListBateaux.Remove(SM1);
+                            else
+                                MaFlotte.PlacerBateau(NomsBateau.SousMarin);
                         }
                         else
                         {
-                            MaFlotte.PlacerBateau(NomsBateau.SousMarin);
                             SM2 = new SousMarin(XBat, YBat, Orient);
                             ListBateaux.Add(SM2);
                             if (!SM2.PeutPlacer(MaGrille, MaFlotte))
                                 ListBateaux.Remove(SM2);
+                            else
+                                MaFlotte.PlacerBateau(NomsBateau.SousMarin);
                         }
                         break;
                 }
@@ -177,12 +184,12 @@ namespace NavalStrike
 
         public bool ResteBateau()
         {
-            bool ResteBat = false;
+            bool ResteBat = false; // On part du principe qu'il n'a plus de bateaux
             foreach (var bateau in ListBateaux)
             {
-                if (bateau.Coule == false)
+                if (bateau.Coule == false) // Mais si un bateau a sa variable Coulé à false
                 {
-                    ResteBat = true;
+                    ResteBat = true; // alors l'adversaire a encore au moins un bateau
                     break;
                 }
             }

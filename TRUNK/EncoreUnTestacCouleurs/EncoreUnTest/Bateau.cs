@@ -19,9 +19,9 @@ namespace NavalStrike
             {   
                 if (O == Orientation.Est || O == Orientation.Ouest)
                 {
-                    if (_grilleAdversaire.grille[Y, cell].Etat == EtatCase.Bateau) // Si on trouve une case dont l'état est bateau, alors le bateau n'est pas coulé.
+                    if (_grilleAdversaire.grille[Y, cell].Etat == EtatCase.Bateau) // Si on trouve une case dont l'état est bateau
                     {
-                        estCoule = false;
+                        estCoule = false; // alors le bateau n'est pas coulé.
                         break;
                     }
                 }

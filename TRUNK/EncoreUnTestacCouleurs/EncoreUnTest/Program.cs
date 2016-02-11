@@ -34,24 +34,26 @@ namespace NavalStrike
                 int xTir = int.Parse(_code.Substring(1));
                 int yTir = char.ToUpper(char.Parse(_code.Substring(0, 1))) - 64;
                 EtatCase etat = _adversaire.MaGrille.grille[yTir, xTir].Tirer(); // Appeler la méthode Tirer() qui est dans Case.cs
-                _joueur.NbTirs += 1; // Incrémenter le nombre de tirs du joueur pour les stats de fin de partie. (ex : Partie finie en X tirs)
+               
 
                 switch (etat)
                 {
                     case EtatCase.TirRate:
                         _adversaire.MaGrille.grille[yTir, xTir].ChangerEtat(EtatCase.TirRate);  // MaJ Emplacement du tir sur la grille de l'adversaire
-                        _joueur.SaGrille.grille[yTir, xTir].ChangerEtat(EtatCase.TirRate);
-                        etatPartie = EtatPartie.JSuivant;                                       // MaJ Emplacement du tir sur la grille du joueur représentant celle de l'adv.
+                        _joueur.SaGrille.grille[yTir, xTir].ChangerEtat(EtatCase.TirRate);// MaJ Emplacement du tir sur la grille du joueur représentant celle de l'adv.
+                        _joueur.NbTirs += 1; // Incrémenter le nombre de tirs du joueur pour les stats de fin de partie. (ex : Partie finie en X tirs)
+                        etatPartie = EtatPartie.JSuivant;                                       
                         break;
 
                     case EtatCase.TirRateAlready:                                               // Si on tire à un endroit où on a déjà tiré ...
                         Console.WriteLine("Vous avez déjà tiré ici ! Réessayez.\r\n");              // Bah on peut réessayer. C'est gentil non ?
-                        etatPartie = EtatPartie.JRetire; 
+                        etatPartie = EtatPartie.JRetire;
                         break;
 
                     case EtatCase.BateauTouche:
                         _adversaire.MaGrille.grille[yTir, xTir].ChangerEtat(EtatCase.BateauTouche); // Si on réussit un tir, on update les grilles, et on tire à nouveau.
                         _joueur.SaGrille.grille[yTir, xTir].ChangerEtat(EtatCase.BateauTouche);
+                        _joueur.NbTirs += 1; 
                         break;
 
                     case EtatCase.BateauToucheAlready:                                          // Là encore, c'est pour les tirs sur des bateaux déjà touchés.
@@ -62,13 +64,13 @@ namespace NavalStrike
             }
             else // Sinon demander de tirer à nouveau avec un nouveau code.
             {
-                Console.WriteLine("Erreur. Vous avez mal écrit le numéro de la case. Réessayez.\r\n");
+                Console.WriteLine("Erreur. Vous avez mal écrit le code de la case. Réessayez.\r\n");
                 etatPartie = EtatPartie.JRetire;
             }
 
             // Faire le listing des bateaux qu'il reste à l'adversaire.
-            int i = 1; // Compteurs pour les bateaux existant deux fois (torpilleur et sous marin)
-            int j = 1;
+            int comptTorp = 1; // Compteurs pour les bateaux existant deux fois (torpilleur et sous marin)
+            int comptSM = 1;
             foreach (var bateau in _adversaire.ListBateaux)
             {
                 if (bateau.EstCoule(_adversaire.MaGrille, _joueur.SaGrille))
@@ -97,15 +99,15 @@ namespace NavalStrike
                             break;
                         case NomsBateau.Torpilleur:
                             
-                            if (i == 1)
+                            if (comptTorp == 1) // Ce compteur permet d'éviter d'écrire deux fois la même ligne (Il vous reste 2 torpilleurs à couler.
                                 Console.WriteLine("Il vous reste {0} {1}(s) à couler.", _adversaire.MaFlotte.QuantiteTorpi, bateau.Nom);
-                            i++;
+                            comptTorp++;
                             break;
                         case NomsBateau.SousMarin:
                             
-                            if (j == 1)
+                            if (comptSM == 1)
                                 Console.WriteLine("Il vous reste {0} {1}(s) à couler.", _adversaire.MaFlotte.QuantiteSousMarin, bateau.Nom);
-                            j++;
+                            comptSM++;
                             break;
                     }
                 }
@@ -122,6 +124,9 @@ namespace NavalStrike
         static void Main(string[] args)
         {
             EtatPartie etat = EtatPartie.JRetire;
+            DernierTir = NumJoueur.J2;
+
+
             Console.WriteLine("Création du joueur 1. Votre nom ?");
             Joueur joueur1 = new Joueur(Console.ReadLine(), NumJoueur.J1);
             joueur1.FaireGrille();
@@ -140,8 +145,7 @@ namespace NavalStrike
 
             Console.WriteLine("Laissez la main au premier joueur.");
             Console.ReadKey();          
-
-            DernierTir = NumJoueur.J2;
+            
             while (etat != EtatPartie.PTerminée)
             {
                 if (DernierTir == NumJoueur.J2)
